@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll Tab Project</title>
+  </head>
+  <style>
+    .navbar {
+      background-color: #333;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1;
+      transition: top 0.3s ease-in-out;
+    }
+
+    .navbar.sticky {
+      position: fixed;
+      top: 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar a {
+      color: #fff;
+      padding: 12px;
+      text-decoration: none;
+      float: left;
+      font-size: 18px;
+    }
+
+    .content {
+      padding-top: 70px;
+      /* add a padding-top value equal to the navbar's height */
+    }
+
+    /* add some styles just for demonstration purposes */
+    section {
+      height: 600px;
+    }
+
+    section:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+
+    section:nth-child(even) {
+      background-color: #e6e6e6;
+    }
+  </style>
+  <body>
+    <header class="navbar">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#">Blog</a>
+    </header>
+
+    <main class="content">
+      <section>
+        <h1>Section 1</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
+          fringilla metus sed neque malesuada, eu maximus lectus ullamcorper.
+        </p>
+      </section>
+
+      <section>
+        <h1>Section 2</h1>
+        <p>
+          Suspendisse varius nibh eu mauris bibendum, vitae aliquet nisi
+          malesuada. Donec a ullamcorper turpis.
+        </p>
+      </section>
+
+      <section>
+        <h1>Section 3</h1>
+        <p>
+          Cras id mauris posuere, fringilla arcu quis, pharetra eros. Nulla
+          facilisi.
+        </p>
+      </section>
+
+      <section>
+        <h1>Section 4</h1>
+        <p>
+          Curabitur sagittis enim ac tortor commodo aliquet. Pellentesque
+          habitant morbi tristique senectus et netus et malesuada fames ac
+          turpis egestas.
+        </p>
+      </section>
+    </main>
+    <script>
+      window.onscroll = function () {
+        var navbar = document.querySelector(".navbar");
+        var sticky = navbar.offsetTop;
+        if (window.pageYOffset >= sticky) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      };
+    </script>
+  </body>
+</html>

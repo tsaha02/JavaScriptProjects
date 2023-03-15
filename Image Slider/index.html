@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Slider</title>
+  </head>
+  <style>
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slider {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+
+    .slider img {
+      width: 100%;
+      height: auto;
+      background-size: cover;
+    }
+
+    .prev-btn,
+    .next-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      background-color: #fff;
+      border: none;
+      outline: none;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .prev-btn {
+      left: 10px;
+    }
+
+    .next-btn {
+      right: 10px;
+    }
+  </style>
+  <body>
+    <div class="slider-container">
+      <div class="slider">
+        <img src="./pexels-james-wheeler-1542495.jpg" alt="Image 1" />
+        <img src="./pexels-pixabay-417023.jpg" alt="Image 2" />
+        <img src="./tree-736885_960_720.jpg" alt="Image 3" />
+      </div>
+      <button class="prev-btn">&lt;</button>
+      <button class="next-btn">&gt;</button>
+    </div>
+    <script>
+      const slider = document.querySelector(".slider");
+      const prevBtn = document.querySelector(".prev-btn");
+      const nextBtn = document.querySelector(".next-btn");
+      const slideWidth = slider.clientWidth;
+
+      let slideIndex = 0;
+
+      prevBtn.addEventListener("click", () => {
+        slideIndex--;
+        if (slideIndex < 0) {
+          slideIndex = slider.children.length - 1;
+        }
+        slider.style.transform = `translateX(${-slideWidth * slideIndex}px)`;
+      });
+
+      nextBtn.addEventListener("click", () => {
+        slideIndex++;
+        if (slideIndex >= slider.children.length) {
+          slideIndex = 0;
+        }
+        slider.style.transform = `translateX(${-slideWidth * slideIndex}px)`;
+      });
+    </script>
+  </body>
+</html>

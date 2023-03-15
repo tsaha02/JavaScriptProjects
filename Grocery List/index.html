@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Grocery List</title>
+        <link rel="stylesheet" href="style.css" />
+      </head>
+      <style>
+        body {
+          background-color: #f5f5f5;
+          font-family: Arial, sans-serif;
+        }
+
+        .container {
+          margin: 0 auto;
+          max-width: 600px;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+          text-align: center;
+        }
+
+        form {
+          display: flex;
+          margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+          flex-grow: 1;
+          padding: 10px;
+          border-radius: 5px 0 0 5px;
+          border: none;
+        }
+
+        button[type="button"] {
+          padding: 10px;
+          border-radius: 0 5px 5px 0;
+          border: none;
+          background-color: #4caf50;
+          color: #fff;
+          cursor: pointer;
+        }
+
+        ul {
+          list-style-type: none;
+          padding: 0;
+        }
+
+        li {
+          padding: 10px;
+          margin-bottom: 5px;
+          background-color: #f9f9f9;
+          border-radius: 5px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .delete-btn {
+          background-color: #f44336;
+          color: #fff;
+          border: none;
+          padding: 5px 10px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+      </style>
+      <body>
+        <div class="container">
+          <h1>Grocery List</h1>
+          <form>
+            <input type="text" id="item" placeholder="Add item" />
+            <button type="button" onclick="addItem()">Add</button>
+          </form>
+          <ul id="grocery-list"></ul>
+        </div>
+        <script>
+          function addItem() {
+            const input = document.getElementById("item");
+            const ul = document.getElementById("grocery-list");
+            const li = document.createElement("li");
+            li.appendChild(document.createTextNode(input.value));
+
+            // Create delete button
+            const deleteBtn = document.createElement("button");
+            deleteBtn.innerHTML = "Delete";
+            deleteBtn.classList.add("delete-btn");
+            deleteBtn.addEventListener("click", deleteItem);
+            li.appendChild(deleteBtn);
+
+            ul.appendChild(li);
+            input.value = "";
+          }
+
+          function deleteItem() {
+            const li = this.parentNode;
+            const ul = li.parentNode;
+            ul.removeChild(li);
+          }
+        </script>
+      </body>
+    </html>
+  </body>
+</html>

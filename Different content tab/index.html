@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabs that display different content</title>
+  </head>
+  <style>
+    .tabs {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      display: block;
+      padding: 10px 20px;
+      background-color: #f1f1f1;
+      border-radius: 5px 5px 0 0;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .tab:hover,
+    .tab:focus {
+      background-color: #ddd;
+    }
+
+    .tab.active {
+      background-color: #ddd;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 20px;
+      border-radius: 0 5px 5px 5px;
+      background-color: #f1f1f1;
+      color: #333;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+  <body>
+    <div class="tabs">
+      <button><a href="#tab1" class="tab active">Tab 1</a></button>
+      <button><a href="#tab2" class="tab">Tab 2</a></button>
+      <button><a href="#tab3" class="tab">Tab 3</a></button>
+    </div>
+
+    <div id="tab1" class="tab-content active">
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium
+        facilis impedit voluptatibus numquam necessitatibus! Expedita, neque
+        laboriosam? Veniam, voluptatum ratione quis aperiam beatae commodi
+        quibusdam consequatur, ducimus et sed laboriosam in ea aspernatur
+        reprehenderit deserunt velit tenetur. Soluta tempore culpa ratione
+        dolore perspiciatis nihil fugit, numquam autem aliquam nisi quidem
+        excepturi earum sapiente reiciendis quibusdam obcaecati, totam harum.
+        Possimus laudantium excepturi doloribus dolorum accusamus quae, eius
+        natus officia labore asperiores porro rerum. Tenetur, natus perspiciatis
+        praesentium reprehenderit quo mollitia. Harum, et! Animi quo nulla,
+        deleniti commodi exercitationem possimus sed sequi eligendi corrupti,
+        provident id perferendis labore distinctio sunt laboriosam illo.
+      </p>
+    </div>
+
+    <div id="tab2" class="tab-content">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit,
+        obcaecati ducimus deserunt ratione ad vitae maiores perferendis tenetur
+        molestiae dolorum delectus adipisci nihil? Maiores harum placeat ut
+        officiis aliquid dolor ex temporibus adipisci laudantium magnam
+        architecto ipsa ipsum aliquam ducimus recusandae eum laboriosam sunt
+        esse similique, voluptatem nihil ad! Est nobis cupiditate omnis quis hic
+        doloremque eaque similique a fugiat dolore optio provident quisquam,
+        eius dolorem quia odio natus exercitationem impedit blanditiis quam
+        earum accusamus? Est, atque veritatis. Eligendi deleniti tempore
+        dignissimos sequi, perspiciatis ratione repellendus repudiandae magni
+        unde, alias autem laboriosam, debitis ad. Magnam quos eius deserunt
+        quasi!
+      </p>
+    </div>
+
+    <div id="tab3" class="tab-content">
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus officiis
+        quidem eaque, consectetur accusantium perspiciatis nam impedit esse sint
+        iusto explicabo tenetur aspernatur exercitationem nostrum ipsa debitis
+        nemo modi earum dolores odit veniam perferendis itaque sapiente. Aperiam
+        animi dolore magni suscipit deleniti facilis, ipsam totam saepe
+        accusantium quos modi dolores rem ipsa a porro explicabo, nihil minima
+        voluptate nisi! Voluptatum voluptatibus corporis quasi rerum quod, ex
+        incidunt eaque, quis vitae, perspiciatis exercitationem distinctio
+        excepturi placeat enim velit eligendi aliquam maxime et obcaecati sed.
+        Id quae nisi veritatis. Repellat, porro.
+      </p>
+    </div>
+    <script>
+      const tabs = document.querySelectorAll(".tab");
+      const tabContents = document.querySelectorAll(".tab-content");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          tabs.forEach((tab) => {
+            tab.classList.remove("active");
+          });
+
+          tab.classList.add("active");
+
+          const target = tab.getAttribute("href");
+
+          tabContents.forEach((tabContent) => {
+            tabContent.classList.remove("active");
+
+            if (tabContent.getAttribute("id") === target.slice(1)) {
+              tabContent.classList.add("active");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

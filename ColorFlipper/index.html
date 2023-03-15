@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ColorFlipper" />
+    <title>ColorFlipper</title>
+  </head>
+  <style>
+    body {
+      background-color: transparent;
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    button {
+      background-color: black;
+      color: whitesmoke;
+      font-size: 1.5rem;
+      padding: 1rem 2rem;
+      border-radius: 0.25rem;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div id="container">
+      <h1>Color Flipper</h1>
+      <button id="btn">Flip Me!</button>
+    </div>
+    <script>
+      const colors = ["red", "green", "pink", "yellow", "blue", "orange"];
+
+      const button = document.querySelector("#btn");
+      const container = document.querySelector("#container");
+
+      button.addEventListener("click", function () {
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        container.style.backgroundColor = randomColor;
+      });
+    </script>
+  </body>
+</html>

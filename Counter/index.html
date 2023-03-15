@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="counter" />
+    <title>Counter</title>
+  </head>
+  <style>
+    .counter {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 2em;
+      margin: 2em;
+    }
+
+    button {
+      margin: 0.5em;
+      padding: 0.5em;
+      font-size: 1em;
+      border: none;
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+  <body>
+    <div class="counter">
+      <h1 id="counter-value"></h1>
+      <button id="increment-btn">Increase</button>
+      <button id="reset-btn">Reset</button>
+      <button id="decrement-btn">Decrease</button>
+    </div>
+    <script>
+      // Get the counter value and buttons
+      const counterValue = document.getElementById("counter-value");
+      const incrementBtn = document.getElementById("increment-btn");
+      const decrementBtn = document.getElementById("decrement-btn");
+      const resetBtn = document.getElementById("reset-btn");
+
+      // Initialize the counter value
+      let count = 0;
+
+      // Update the counter value on the page
+      function updateCounter() {
+        counterValue.innerText = count;
+      }
+
+      // Increment the counter value and update the page
+      function incrementCounter() {
+        count++;
+        updateCounter();
+      }
+
+      // Decrement the counter value and update the page
+      function decrementCounter() {
+        count--;
+        updateCounter();
+      }
+
+      // Reset the counter value to 0 and update the page
+      function resetCounter() {
+        count = 0;
+        updateCounter();
+      }
+
+      // Add event listeners to the buttons
+      incrementBtn.addEventListener("click", incrementCounter);
+      decrementBtn.addEventListener("click", decrementCounter);
+      resetBtn.addEventListener("click", resetCounter);
+    </script>
+  </body>
+</html>

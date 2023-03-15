@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timer</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      #countdown {
+        display: flex;
+        justify-content: center;
+      }
+
+      #countdown div {
+        text-align: center;
+      }
+
+      #countdown span {
+        font-size: 80px;
+        margin: 0 20px;
+      }
+
+      .smalltext {
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>TIME LEFT TO 31st of MARCH</h1>
+    <div id="countdown">
+      <div>
+        <span id="days"></span>
+        <div class="smalltext">Days</div>
+      </div>
+      <div>
+        <span id="hours"></span>
+        <div class="smalltext">Hours</div>
+      </div>
+      <div>
+        <span id="minutes"></span>
+        <div class="smalltext">Minutes</div>
+      </div>
+      <div>
+        <span id="seconds"></span>
+        <div class="smalltext">Seconds</div>
+      </div>
+    </div>
+    <script>
+      let countDownDate = new Date("Mar 31, 2023 23:59:59").getTime();
+
+      let getTime = setInterval(function () {
+        let now = new Date().getTime();
+
+        let distance = countDownDate - now;
+
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = seconds;
+
+        if (distance < 0) {
+          clearInterval(getTime);
+          document.getElementById("countdown").innerHTML = "EXPIRED";
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

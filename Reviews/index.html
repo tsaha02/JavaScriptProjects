@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reviews</title>
+  </head>
+  <body>
+    <div id="review-section">
+      <h2>Customer Reviews</h2>
+      <div id="review-container">
+        <div class="review">
+          <h3>Great Product!</h3>
+          <p>
+            This product exceeded my expectations. It was easy to use and made a
+            noticeable difference in the quality of my work.
+          </p>
+          <p class="review-author">- Jane Doe</p>
+        </div>
+        <div class="review">
+          <h3>Not Worth the Money</h3>
+          <p>
+            I found this product to be overpriced and ineffective. I wouldn't
+            recommend it to others.
+          </p>
+          <p class="review-author">- John Smith</p>
+        </div>
+        <div class="review">
+          <h3>Life Changing!</h3>
+          <p>
+            This product has completely transformed my daily routine. I can't
+            imagine going back to my old way of doing things.
+          </p>
+          <p class="review-author">- Sarah Jones</p>
+        </div>
+      </div>
+      <div id="review-navigation">
+        <button id="prev-btn">Previous</button>
+        <button id="next-btn">Next</button>
+      </div>
+    </div>
+    <script>
+      const prevBtn = document.getElementById("prev-btn");
+      const nextBtn = document.getElementById("next-btn");
+      const reviews = document.querySelectorAll(".review");
+      let currentIndex = 0;
+
+      function showReview(index) {
+        reviews.forEach((review, i) => {
+          if (i === index) {
+            review.style.display = "block";
+          } else {
+            review.style.display = "none";
+          }
+        });
+      }
+
+      showReview(currentIndex);
+
+      prevBtn.addEventListener("click", () => {
+        currentIndex--;
+        if (currentIndex < 0) {
+          currentIndex = reviews.length - 1;
+        }
+        showReview(currentIndex);
+      });
+
+      nextBtn.addEventListener("click", () => {
+        currentIndex++;
+        if (currentIndex >= reviews.length) {
+          currentIndex = 0;
+        }
+        showReview(currentIndex);
+      });
+    </script>
+  </body>
+</html>

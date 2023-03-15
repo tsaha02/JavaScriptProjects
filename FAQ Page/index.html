@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .faq {
+    margin-bottom: 20px;
+  }
+  
+  .faq h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .faq .answer {
+    display: none;
+    padding-left: 30px;
+  }
+  
+  .faq.active .answer {
+    display: block;
+  }
+  </style>
+  <body>
+    <h1>
+        ALL QUESTIONS
+    </h1>
+    <div class="faq">
+      <h2>Question 1?</h2>
+      <div class="answer">
+        <p>Answer to question 1.</p>
+      </div>
+    </div>
+    <div class="faq">
+      <h2>Question 2?</h2>
+      <div class="answer">
+        <p>Answer to question 2.</p>
+      </div>
+    </div>
+    <div class="faq">
+      <h2>Question 3?</h2>
+      <div class="answer">
+        <p>Answer to question 3.</p>
+      </div>
+    </div>
+    <script>
+  let faqs = document.querySelectorAll('.faq');
+
+  faqs.forEach(function(faq) {
+    let question = faq.querySelector('h2');
+
+    question.addEventListener('click', function() {
+      faq.classList.toggle('active');
+    });
+  });
+</script>
+
+    </script>
+  </body>
+</html>
